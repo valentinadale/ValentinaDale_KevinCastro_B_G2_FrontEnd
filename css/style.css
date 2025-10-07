@@ -1,0 +1,8 @@
+body img{
+    width: 1000px;
+}
+
+.lol{
+    display: flex;
+    justify-content: center;
+}
