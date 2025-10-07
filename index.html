@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premios</title>
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brandfw-bold" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav">
+                <span class="navbar-tlogger-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Premios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4">Lista de Premios</h2>
+            <button class="btn btn-success" data-bs-toggle="moda" data-bs-target="#premiosModal" id="btnAdd">
+                <i class="bi bi-plus-lg me-1"></i>
+                Agregar +
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle" id="table">
+                <thead class="table-warning">
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre Premio</th>
+                        <th>Categoria</th>
+                        <th>Año</th>
+                        <th>Resultado</th>
+                        <th>Fecha</th>
+                        <th>Pelicula</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td colspan="8">Actualmente no hay registros de premios</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--Modal Agregar y Editar-->
+    <div class="modal fade" id="modal" tabindex="-1" area-labelledby="modalLabel" area-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="moda-header border-0 d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="modal-title" id="modalLabel">Agregar premio</h5>
+                    <button type="button" class="btn btn-close" data-bs-demiss="modal" id="btnCloseModal" aria-label="cerrar"></button>
+                </div>
+                <form id="form">
+                    <input type="hidden" id="idPremio">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Nombre" class="form-label">Nombre <span
+                                    style="color: rgb(255, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="Nombre" placeholder="Nombre del premio"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Categoria" class="form-label">Categoria <span
+                                    style="color: rgb(255, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="Categoria" placeholder="Categoria del premio"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Año" class="form-label">Año <span
+                                    style="color: rgb(255, 0, 0);">*</span></label>
+                            <input type="number" class="form-control" id="Ano" placeholder="Año del premio" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Resultado" class="form-label">Resultado <span
+                                    style="color: rgb(255, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="Resultado" placeholder="Resultado"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Fecha" class="form-label">Fecha <span
+                                    style="color: rgb(255, 0, 0);">*</span></label>
+                            <input type="date" class="form-control" id="Fecha" placeholder="Fecha del premio" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="SelectPelicula">Pelicula</label>
+                            <select class="form-select" id="selectPelicula" aria-label="Peliculas">
+                                <option selected="">Escoger una pelicula</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-demiss="modal" id="cancelar">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success" id="Guardar">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Scripts-->
+
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="js/Controller/PremiosController.js"></script>
+</body>
+
+</html>
