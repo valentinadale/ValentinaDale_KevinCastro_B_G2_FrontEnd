@@ -71,7 +71,8 @@
             <div class="modal-content p-3">
                 <div class="moda-header border-0 d-flex justify-content-between align-items-center mb-3">
                     <h5 class="modal-title" id="modalLabel">Agregar premio</h5>
-                    <button type="button" class="btn btn-close" data-bs-demiss="modal" id="btnCloseModal" aria-label="cerrar"></button>
+                    <button type="button" class="btn btn-close" data-bs-demiss="modal" id="btnCloseModal"
+                        aria-label="cerrar"></button>
                 </div>
                 <form id="form">
                     <input type="hidden" id="idPremio">
@@ -91,13 +92,15 @@
                         <div class="mb-3">
                             <label for="Año" class="form-label">Año <span
                                     style="color: rgb(255, 0, 0);">*</span></label>
-                            <input type="number" class="form-control" id="Ano" placeholder="Año del premio" required>
+                            <input type="number" class="form-control" id="Ano" placeholder="Año del premio" min="1990"
+                                required>
                         </div>
                         <div class="mb-3">
-                            <label for="Resultado" class="form-label">Resultado <span
-                                    style="color: rgb(255, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="Resultado" placeholder="Resultado"
-                                required>
+                            <label for="Resultado">Pelicula <span style="color: rgb(255, 0, 0);">*</span> </label>
+                            <select class="form-select" id="Resultado" aria-label="Peliculas" required>
+                                <option value="GANADO">GANADO</option>
+                                <option value="NOMINADO">NOMINADO</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="Fecha" class="form-label">Fecha <span
@@ -105,8 +108,8 @@
                             <input type="date" class="form-control" id="Fecha" placeholder="Fecha del premio" required>
                         </div>
                         <div class="mb-3">
-                            <label for="SelectPelicula">Pelicula</label>
-                            <select class="form-select" id="selectPelicula" aria-label="Peliculas">
+                            <label for="SelectPelicula">Pelicula <span style="color: rgb(255, 0, 0);">*</span> </label>
+                            <select class="form-select" id="selectPelicula" aria-label="Peliculas" required>
                                 <option selected="">Escoger una pelicula</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -133,6 +136,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="module" src="js/Controller/PremiosController.js"></script>
 </body>

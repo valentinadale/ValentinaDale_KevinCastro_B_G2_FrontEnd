@@ -36,31 +36,46 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const id = form.idPremio.value;
+
         const data = {
             nombrePremio: form.Nombre.value.trim(),
             categoria: form.Categoria.value.trim(),
-            anoPremio: form.Ano.value,
+            anoPremio: Number(form.Ano.value),
             resultado: form.Resultado.value.trim(),
-            fecha_Registro: form.Fecha.value,
-            peliculaId: form.selectPelicula.value
+            fechaRegistro: form.Fecha.value,
+            peliculaId: Number(form.selectPelicula.value)
         };
+
+        console.log(data);
+        let putResponse;
+        let postResponse;
 
         try {
             if (id) {
-                const putResponse = await put(id, data)
+                putResponse = await put(id, data);
+                Swal.fire({
+                    title: "Exito! Se actualizó el premio correctamente.",
+                    text: putResponse,
+                    icon: "success"
+                });
             }
             else {
-                const postResponse = await post(data);
+                postResponse = await post(data);
+                Swal.fire({
+                    title: "Exito! Se creo el premio correctamente.",
+                    text: postResponse,
+                    icon: "success"
+                });
             }
             modal.hide();
             await load();
         } catch (err) {
             console.log("Error: ", err);
-            /*Swal.fire({
+            Swal.fire({
                 title: "ERROR",
-                text: err,
+                text: err, putResponse, postResponse,
                 icon: "error"
-            });*/
+            });
         }
     });
 
@@ -81,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${premio.categoria}</td>
                         <td>${premio.anoPremio}</td>
                         <td>${premio.resultado}</td>
-                        <td>${premio.fecha_Registro}</td>
+                        <td>${premio.fechaRegistro}</td>
                         <td>${premio.nombrePelicula}</td>
                         <td>
                             <button class="btn btn-sm btn-outline-secondary edit-btn">
@@ -99,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     form.Categoria.value = premio.categoria;
                     form.Ano.value = premio.anoPremio;
                     form.Resultado.value = premio.resultado;
-                    form.Fecha.value = premio.fecha_Registro;
+                    form.Fecha.value = premio.fechaRegistro;
                     form.selectPelicula.value = premio.peliculaId;
                     lbModal.textContent = "Editar";
                     modal.show();
@@ -107,7 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 tr.querySelector(".delete-btn").addEventListener("click", () => {
                     if (confirm("Desea eliminar el registro")) {
-                        eliminate(premio.idPremio).then(load());
+                        Swal.fire({
+                            title: "Eliminado",
+                            text: 'Se elimino el premio correctamente',
+                            icon: "success"
+                        });
+                        eliminate(premio.idPremio).then(load);
                     }
                 });
 
@@ -130,10 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             peliculas.forEach((pelicula) => {
                 const option = document.createElement("option");
-                option.value = pelicula.id;
-                option.innerHTML = pelicula.nombre;
+                option.value = pelicula.peliculaId;
+                option.innerHTML = pelicula.titulo;
 
-                tableBody.appendChild(option);
+                select.appendChild(option);
             });
         }
         catch (err) {

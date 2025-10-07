@@ -1,4 +1,4 @@
-const API_URL_PREMIOS = 'localhost:8080/api/premios';
+const API_URL_PREMIOS = 'http://localhost:8080/api/premios';
 
 export async function get() {
     const res = await fetch(`${API_URL_PREMIOS}/mostrarPremios`);
@@ -6,7 +6,7 @@ export async function get() {
 }
 
 export async function post(data){
-    await fetch(`${API_URL_PREMIOS}/`, {
+    await fetch(`${API_URL_PREMIOS}/ingresarPremio`, {
         method: "POST",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(data)
@@ -14,7 +14,7 @@ export async function post(data){
 }
 
 export async function put(id, data){
-    await fetch(`${API_URL_PREMIOS}//${id}`, {
+    await fetch(`${API_URL_PREMIOS}/actualizarPremio/${id}`, {
         method: "PUT",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(data)
@@ -22,14 +22,14 @@ export async function put(id, data){
 }
 
 export async function eliminate(id){
-    await fetch(`${API_URL_PREMIOS}//${id}`, {
+    await fetch(`${API_URL_PREMIOS}/eliminarPremio/${id}`, {
         method: "DELETE"
     });
 }
 
-const API_URL_PELICULAS = '';
+const API_URL_PELICULAS = 'http://localhost:8080/api/peliculas';
 
 export async function getPeliculas() {
-    const res = await fetch(`${API_URL_PELICULAS}/`);
+    const res = await fetch(`${API_URL_PELICULAS}/mostrarPeliculas`);
     return res.json();
 }
